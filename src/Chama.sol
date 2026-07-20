@@ -44,4 +44,32 @@ contract Chama {
 
         emit Contributed(msg.sender, currentRound, contributionAmount);
     }
+    function payout() public {
+        require(members.length > 0, "Chama: no members");
+        require(pool > 0, "Chama: nothing to pay out");
+
+        uint recipientIndex = nextRecipientIndex;
+        address recipient = address(0);
+
+        for (uint i = recipientIndex; i < members.length; i++) {
+            if (hasContributed[currentRound][members[i]] && !hasReceivedPayout[members[i]]) {
+                recipient = members[i];
+                nextRecipientIndex = i + 1;
+                break;
+            }
+        }
+
+        require(recipient != address(0), "Chama: no eligible recipient this round");
+
+        uint amount = pool;
+        pool = 0;
+
+        hasReceivedPayout[recipient] = true;
+        currentRound++;
+
+        bool success = token.transfer(recipient, amount);
+        require(success, "Chama: payout transfer failed");
+
+        emit PayoutSent(recipient, amount, currentRound - 1);
+    }
 }
