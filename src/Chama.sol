@@ -32,4 +32,16 @@ contract Chama {
 
         emit MemberJoined(msg.sender);
     }
+    function contribute() public {
+        require(isMember[msg.sender], "Chama: not a member");
+        require(!hasContributed[currentRound][msg.sender], "Chama: already contributed this round");
+
+        bool success = token.transferFrom(msg.sender, address(this), contributionAmount);
+        require(success, "Chama: token transfer failed");
+
+        hasContributed[currentRound][msg.sender] = true;
+        pool += contributionAmount;
+
+        emit Contributed(msg.sender, currentRound, contributionAmount);
+    }
 }
