@@ -52,4 +52,65 @@ contract ChamaTest is Test {
         vm.expectRevert("Chama: signup phase is over");
         chama.joinChama();
     }
+    function test_CannotContributeTwiceInSameRound() public {
+        vm.prank(alice);
+        chama.joinChama();
+
+        vm.prank(alice);
+        chama.contribute();
+
+        vm.prank(alice);
+        vm.expectRevert("Chama: already contributed this round");
+        chama.contribute();
+    }
+
+    function test_SkippedMemberDoesNotBlockPayout() public {
+        vm.prank(alice);
+        chama.joinChama();
+        vm.prank(bob);
+        chama.joinChama();
+        vm.prank(carol);
+        chama.joinChama();
+
+        // Alice deliberately does NOT contribute this round
+        vm.prank(bob);
+        chama.contribute();
+        vm.prank(carol);
+        chama.contribute();
+
+        uint bobBalanceBefore = token.balanceOf(bob);
+        chama.payout();
+        uint bobBalanceAfter = token.balanceOf(bob);
+
+        // Bob should be paid since Alice (first in line) was skipped
+        assertEq(bobBalanceAfter - bobBalanceBefore, CONTRIBUTION * 2);
+        assertTrue(chama.hasReceivedPayout(bob));
+        assertFalse(chama.hasReceivedPayout(alice));
+    }
+
+    function test_MemberCannotReceivePayoutTwice() public {
+        vm.prank(alice);
+        chama.joinChama();
+        vm.prank(bob);
+        chama.joinChama();
+
+        // Round 1: both contribute, Alice gets paid (first in line)
+        vm.prank(alice);
+        chama.contribute();
+        vm.prank(bob);
+        chama.contribute();
+        chama.payout();
+
+        assertTrue(chama.hasReceivedPayout(alice));
+
+        // Round 2: both contribute again
+        vm.prank(alice);
+        chama.contribute();
+        vm.prank(bob);
+        chama.contribute();
+        chama.payout();
+
+        // Bob should now be paid, not Alice again
+        assertTrue(chama.hasReceivedPayout(bob));
+    }
 }
