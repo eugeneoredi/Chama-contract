@@ -3,7 +3,8 @@
 A rotating savings group (chama) smart contract built with Foundry.
 Members join, contribute a fixed stablecoin amount each round, and the pool
 pays out to the next eligible member in signup order. Missed contributions
-skip that round without removing the member from rotation.
+skip that round without removing the member from rotation.By Eugene Oredi done at 2345hrs.
+
 
 ## Foundry
 
