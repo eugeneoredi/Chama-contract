@@ -1,3 +1,4 @@
+/// @title Chama - a rotating savings group (ROSCA) smart contract
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.28;
 
