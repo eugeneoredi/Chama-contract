@@ -99,3 +99,7 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+## License
+
+MIT — see [LICENSE](./LICENSE).
