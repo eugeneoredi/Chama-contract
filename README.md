@@ -22,6 +22,11 @@ skip that round without removing the member from rotation.
 └── broadcast/        Records of past deployments (addresses, tx hashes, gas used)
 ```
 
+## Frontend
+
+A minimal React + ethers.js frontend lives in [`frontend/`](./frontend) — wallet connect, live group status, and the three core actions (join, contribute, trigger payout). See [`frontend/README.md`](./frontend/README.md) for setup instructions.
+
+
 ## Foundry
 
 **Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
@@ -71,8 +76,10 @@ $ anvil
 
 ### Deploy
 
+Deploys to Sepolia — see the top-level `.env.example` for the required environment variables (`PRIVATE_KEY`, `SEPOLIA_RPC_URL`, etc.):
+
 ```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+$ forge script script/DeployChama.s.sol:DeployChamaScript --rpc-url sepolia --broadcast
 ```
 
 ### Cast
