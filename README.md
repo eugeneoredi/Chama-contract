@@ -12,14 +12,15 @@ skip that round without removing the member from rotation.
 | Chama | [`0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5`](https://sepolia.etherscan.io/address/0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5) |
 | MockToken (mUSD) | [`0x20e79ac973f049E5915a64306D702AB89Be05A8f`](https://sepolia.etherscan.io/address/0x20e79ac973f049E5915a64306D702AB89Be05A8f) |
 
+## Project Structure
 
-## Deployed Contracts (Sepolia)
-
-| Contract | Address |
-|---|---|
-| Chama | [`0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5`](https://sepolia.etherscan.io/address/0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5) |
-| MockToken (mUSD) | [`0x20e79ac973f049E5915a64306D702AB89Be05A8f`](https://sepolia.etherscan.io/address/0x20e79ac973f049E5915a64306D702AB89Be05A8f) |
-
+```
+├── src/              Solidity contracts (Chama.sol, Counter.sol)
+├── test/             Foundry test suite + mocks
+├── script/           Deployment scripts
+├── frontend/         React + ethers.js frontend for interacting with the contract
+└── broadcast/        Records of past deployments (addresses, tx hashes, gas used)
+```
 
 ## Foundry
 
