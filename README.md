@@ -52,9 +52,13 @@ $ forge build
 
 ### Test
 
+Runs the full suite, including the 5 `Chama`-specific tests covering joining, contributing, duplicate-contribution prevention, skipped members, and double-payout prevention:
+
 ```shell
 $ forge test
 ```
+
+Add `-vv` for detailed traces on any failing test.
 
 ### Format
 
