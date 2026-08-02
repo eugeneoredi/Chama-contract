@@ -5,6 +5,21 @@ Members join, contribute a fixed stablecoin amount each round, and the pool
 pays out to the next eligible member in signup order. Missed contributions
 skip that round without removing the member from rotation.
 
+## Deployed Contracts (Sepolia)
+
+| Contract | Address |
+|---|---|
+| Chama | [`0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5`](https://sepolia.etherscan.io/address/0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5) |
+| MockToken (mUSD) | [`0x20e79ac973f049E5915a64306D702AB89Be05A8f`](https://sepolia.etherscan.io/address/0x20e79ac973f049E5915a64306D702AB89Be05A8f) |
+
+
+## Deployed Contracts (Sepolia)
+
+| Contract | Address |
+|---|---|
+| Chama | [`0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5`](https://sepolia.etherscan.io/address/0xb170540A1b11F5257C6D2723F6E56D1920bDd4b5) |
+| MockToken (mUSD) | [`0x20e79ac973f049E5915a64306D702AB89Be05A8f`](https://sepolia.etherscan.io/address/0x20e79ac973f049E5915a64306D702AB89Be05A8f) |
+
 
 ## Foundry
 
